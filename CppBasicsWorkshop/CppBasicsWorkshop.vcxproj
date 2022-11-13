@@ -133,6 +133,7 @@
     <ClInclude Include="practice.h" />
     <ClInclude Include="practice_source.h" />
     <ClInclude Include="string_utility.h" />
+    <ClInclude Include="student.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <algorithm>
+#include "student.h"
 using namespace std;
 
 class practice_source
@@ -109,6 +111,7 @@ private:
 		cout << "Please enter count of numbers: ";
 		cin >> countOfNumber;
 		int numbers[1000] = { 0 };
+		cout << "Enter " << countOfNumber << " numbers: " << endl;
 
 		for (int i = 0; i < countOfNumber; i++)
 		{
@@ -356,7 +359,13 @@ private:
 
 	static void practice_14()
 	{
-		//TODO: Implement 
+		int number;
+		cout << "Please enter a number: ";
+		cin >> number;
+
+		bin(number);
+
+		cout << endl;
 	}
 
 	static void practice_15()
@@ -429,21 +438,111 @@ private:
 
 	static void practice_17()
 	{
-		//TODO: Implement 
+		int number, factorial = 1;
+		cout << "Please enter a number: ";
+		cin >> number;
+
+		factorial = factorial_calculator(number);
+
+		cout << "Factorial: " << factorial << endl;
 	}
 
 	static void practice_18()
 	{
-		//TODO: Implement 
+		int number, result = 0;
+		cout << "Please enter a number: ";
+		cin >> number;
+
+		result = sum_natural_numbers(number);
+
+		cout << "Result: " << result << endl;
 	}
 
 	static void practice_19()
 	{
-		//TODO: Implement 
+		int input[1000], count, i, num;
+
+		cout << "Enter number of elements in array: " << endl;
+		cin >> count;
+
+		cout << "Enter " << count << " numbers: " << endl;
+
+		for (i = 0; i < count; i++) {
+			cin >> input[i];
+		}
+
+		cout << "Enter a number to serach in array: " << endl;
+		cin >> num;
+
+		for (i = 0; i < count; i++) {
+			if (input[i] == num) {
+				cout << "Element found at index " << i << endl;
+				break;
+			}
+		}
+
+		if (i == count) {
+			cout << "Element not present in input array" << endl;
+		}
 	}
 
 	static void practice_20()
 	{
-		//TODO: Implement 
+		int count, i;
+		student input[1000];
+
+		cout << "Enter number of student: " << endl;
+		cin >> count;
+
+		cout << "Enter " << count << " student name: " << endl;
+
+		for (i = 0; i < count; i++) {
+			cin >> input[i].student_name;
+		}
+
+		cout << "------------------------- RESULT -------------------------" << endl;
+
+		sort(std::begin(input), std::end(input), [](const student& s1, const student& s2)
+			{
+				return s1.student_name < s2.student_name&& s1.student_name != "" && s2.student_name != "";
+			});
+
+		for (i = 0; i < count; i++) {
+			if (input[i].student_name != "") {
+				cout << input[i].student_name << endl;
+			}
+		}
+
+		cout << endl;
+	}
+
+	static void bin(unsigned n)
+	{
+		/* step 1 */
+		if (n > 1)
+			bin(n / 2);
+
+		/* step 2 */
+		cout << n % 2;
+	}
+
+	static int factorial_calculator(int number)
+	{
+		int factorial = 1;
+		for (int i = 1; i <= number; i++)
+		{
+			factorial *= i;
+		}
+		return factorial;
+	}
+
+	static int sum_natural_numbers(int number)
+	{
+		int result = 0;
+		for (int i = 1; i <= number; i++)
+		{
+			result += i;
+		}
+		return result;
 	}
 };
